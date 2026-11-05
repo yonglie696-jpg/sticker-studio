@@ -299,14 +299,16 @@ app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
 
 // 不读 PORT：预览/托管环境常把 PORT 设成前端端口，会撞车
 const PORT = Number(process.env.API_PORT ?? 8787);
-// 桌面版只监听本机 127.0.0.1（不会弹 Windows 防火墙提示，也不会被局域网访问）；开发时监听所有地址，方便 Vite 代理
-const HOST = process.env.STUDIO_HOST;
+// 默认只监听本机 127.0.0.1：接口没有登录认证，绝不能让局域网里的其他人访问（也不会弹 Windows 防火墙提示）。
+// 确实需要对外监听时，自己设置 STUDIO_HOST（比如 0.0.0.0），后果自负。
+const HOST = process.env.STUDIO_HOST || '127.0.0.1';
+const LOOPBACK = new Set(['127.0.0.1', 'localhost', '::1']);
 const onListen = (err?: Error) => {
   if (err) {
-    console.error(`后端启动失败（端口 ${PORT}）：${err.message}`);
+    console.error(`后端启动失败（${HOST}:${PORT}）：${err.message}`);
     process.exit(1);
   }
-  console.log(`表情包工坊后端已启动：http://${HOST ?? 'localhost'}:${PORT}`);
+  console.log(`表情包工坊后端已启动：http://${HOST.includes(':') ? `[${HOST}]` : HOST}:${PORT}`);
+  if (!LOOPBACK.has(HOST)) console.warn(`⚠ 后端正在监听 ${HOST}，接口没有认证，同一网络里的其他人可以读取你的作品、使用你的 API Key 花钱。不需要的话请去掉 STUDIO_HOST。`);
 };
-if (HOST) app.listen(PORT, HOST, onListen);
-else app.listen(PORT, onListen);
+app.listen(PORT, HOST, onListen);

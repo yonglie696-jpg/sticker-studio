@@ -5,7 +5,7 @@ import path from 'node:path';
 import sharp from 'sharp';
 import { readAigc } from '../server/pipeline/aigcLabel';
 
-const BASE = `http://localhost:${process.env.API_PORT ?? 8787}/api`;
+const BASE = `http://127.0.0.1:${process.env.API_PORT ?? 8787}/api`;
 
 async function call(p: string, init?: RequestInit & { json?: unknown }) {
   const res = await fetch(BASE + p, {

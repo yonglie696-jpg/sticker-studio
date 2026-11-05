@@ -4,8 +4,35 @@ server-dist/
 release/
 data/
 data-public/
-.env
 spike/out/
 spike/*.jsonl
 scripts/out/
+
+# 环境变量（Key 常放在这里）；示例文件可以提交
+.env
+.env.*
+!.env.example
+
+# Key 和凭据：不管放在哪个目录都不提交
+secrets.json
+**/secrets*.json
+credentials*.json
+*.secret
+*.secrets
+
+# 代码签名证书、私钥
 signing/
+*.pfx
+*.p12
+*.pem
+*.key
+*.cer
+*.crt
+*.der
+*.p7b
+*.spc
+*.pvk
+*.snk
+id_rsa*
+id_ed25519*
+id_ecdsa*
