@@ -1,0 +1,105 @@
+{
+  "name": "sticker-studio-public",
+  "version": "0.1.1",
+  "private": true,
+  "description": "表情包工坊（公开版）：国内模型出图 + 微信表情规范后期 + 上架包导出",
+  "author": "表情包工坊",
+  "type": "module",
+  "main": "desktop/main.mjs",
+  "scripts": {
+    "build:server": "node scripts/build-server.mjs",
+    "pack:dir": "vite build && node scripts/build-server.mjs && electron-builder --win dir",
+    "dist:win": "vite build && node scripts/build-server.mjs && electron-builder --win nsis",
+    "dist:win:signed": "vite build && node scripts/build-server.mjs && node scripts/dist-signed.mjs",
+    "dev": "concurrently -k -n server,web -c magenta,cyan \"npm:dev:server\" \"npm:dev:web\"",
+    "dev:server": "tsx server/index.ts",
+    "dev:server:watch": "tsx watch --clear-screen=false server/index.ts",
+    "dev:web": "vite",
+    "build": "vite build",
+    "start": "vite build && tsx server/index.ts",
+    "smoke": "tsx scripts/smoke.ts",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit -p tsconfig.json"
+  },
+  "dependencies": {
+    "@napi-rs/canvas": "^1.1.0",
+    "archiver": "^8.0.0",
+    "express": "^5.3.0",
+    "gifenc": "^1.0.3",
+    "gifsicle": "^7.0.1",
+    "multer": "^2.5.0",
+    "nanoid": "^6.0.2",
+    "omggif": "^1.0.10",
+    "sharp": "^0.35.5"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.3.4",
+    "@types/archiver": "^8.0.0",
+    "@types/express": "^5.0.6",
+    "@types/multer": "^2.3.0",
+    "@types/node": "^26.6.6",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.2.1",
+    "concurrently": "^10.0.6",
+    "electron": "^45.2.3",
+    "electron-builder": "^26.18.0",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "tailwindcss": "^4.3.4",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.6",
+    "vitest": "^5.1.0"
+  },
+  "allowScripts": {
+    "gifsicle@7.0.1": true,
+    "esbuild@0.28.2": true,
+    "electron@45.2.3": true
+  },
+  "build": {
+    "appId": "com.sticker-studio.public",
+    "productName": "表情包工坊",
+    "copyright": "免费软件",
+    "directories": {
+      "output": "release"
+    },
+    "asar": false,
+    "npmRebuild": false,
+    "electronDist": "node_modules/electron/dist",
+    "files": [
+      "package.json",
+      "desktop/**/*",
+      "dist/**/*",
+      "server-dist/**/*",
+      "server/presets/**/*",
+      "server/fonts/**/*",
+      "THIRD_PARTY_NOTICES.txt"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "executableName": "StickerStudio"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "shortcutName": "表情包工坊",
+      "uninstallDisplayName": "表情包工坊",
+      "deleteAppDataOnUninstall": false,
+      "installerLanguages": [
+        "zh_CN"
+      ],
+      "language": "2052",
+      "artifactName": "表情包工坊-安装包-${version}.${ext}"
+    }
+  }
+}

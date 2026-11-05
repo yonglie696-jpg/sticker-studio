@@ -1,0 +1,53 @@
+{
+  "id": "workplace",
+  "name": "职场打工人",
+  "audience": "22–35 岁上班族：工作群、同事私聊、跟领导汇报",
+  "insight": [
+    "工作群里最常发的是“收到、马上办、辛苦了”这类回应：装了会不会常用，取决于这几张",
+    "打工人的情绪要有出口但不能太冲：“裂开、心累”这种自嘲比骂人安全，也更好笑",
+    "摸鱼、干饭、续命咖啡是共同记忆，发出去容易引起共鸣和二次转发",
+    "跟领导和同事都能发：画面可爱、动作夸张，但不出现脏话和敏感内容",
+    "一张一个意思：缩到聊天列表大小、只看第一帧也能读懂"
+  ],
+  "characters": [],
+  "groups": [
+    { "name": "收到确认", "why": "工作群每天都要用，决定装了以后会不会常发" },
+    { "name": "摸鱼日常", "why": "打工人的共同记忆，容易引起共鸣" },
+    { "name": "情绪出口", "why": "用自嘲代替抱怨，又好笑又安全" },
+    { "name": "加油互助", "why": "夸同事、求帮忙、道谢，职场关系的润滑剂" },
+    { "name": "下班快乐", "why": "周五和下班时刻的高光情绪" }
+  ],
+  "stickers": [
+    { "meaning": "收到", "caption": "收到！", "action": "双脚并拢立正敬礼，身体一挺，身后闪过一道光", "emotion": "干练", "scene": "领导交代任务", "group": "收到确认", "default": true, "textAnim": "pop" },
+    { "meaning": "马上办", "caption": "马上办", "action": "抱着一摞文件一路小跑，脚下扬起小烟尘", "emotion": "积极", "scene": "接到急活", "group": "收到确认", "default": true, "textAnim": "shake" },
+    { "meaning": "好的", "caption": "好的", "action": "认真地点一下头，手里的笔在小本子上打一个勾", "emotion": "认真", "scene": "正式回复", "group": "收到确认", "default": true, "textAnim": "static" },
+    { "meaning": "在改了", "caption": "在改了", "action": "对着电脑疯狂敲键盘，键盘上蹦出小火星", "emotion": "忙碌", "scene": "被催进度", "group": "收到确认", "default": true, "textAnim": "shake" },
+    { "meaning": "稍等", "caption": "稍等哈", "action": "举起一根手指示意稍等，另一只手还在打字", "emotion": "忙碌", "scene": "让对方等一下", "group": "收到确认", "default": true, "textAnim": "bounce" },
+    { "meaning": "明白", "caption": "明白", "action": "恍然大悟地拍一下脑袋，头顶亮起一个小灯泡", "emotion": "领悟", "scene": "听懂了安排", "group": "收到确认", "default": true, "textAnim": "pop" },
+    { "meaning": "已读", "caption": "已阅", "action": "面无表情地慢慢点头，眼睛半睁", "emotion": "敷衍", "scene": "不想多说", "group": "收到确认", "default": false, "textAnim": "static" },
+
+    { "meaning": "摸鱼", "caption": "摸鱼中", "action": "躲在电脑屏幕后面偷偷吃零食，眼睛警惕地左右张望", "emotion": "心虚", "scene": "上班偷闲", "group": "摸鱼日常", "default": true, "textAnim": "bounce" },
+    { "meaning": "干饭", "caption": "干饭", "action": "举着筷子冲向一大碗冒热气的面", "emotion": "兴奋", "scene": "午饭时间", "group": "摸鱼日常", "default": true, "textAnim": "shake" },
+    { "meaning": "好困", "caption": "好困", "action": "眼皮打架，脑袋一点一点往下掉，又猛地惊醒", "emotion": "困倦", "scene": "下午犯困", "group": "摸鱼日常", "default": true, "textAnim": "static" },
+    { "meaning": "续命", "caption": "续命", "action": "双手抱着一大杯咖啡咕咚咕咚喝，喝完眼睛一下子亮了", "emotion": "满足", "scene": "喝咖啡提神", "group": "摸鱼日常", "default": true, "textAnim": "pop" },
+    { "meaning": "开会", "caption": "开会中", "action": "端坐着假装认真记笔记，笔在本子上画圈圈", "emotion": "敷衍", "scene": "会议中没法回消息", "group": "摸鱼日常", "default": true, "textAnim": "static" },
+
+    { "meaning": "裂开", "caption": "裂开", "action": "身体从中间裂成两半，又颤抖着合回来", "emotion": "崩溃", "scene": "需求又改了", "group": "情绪出口", "default": true, "textAnim": "shake" },
+    { "meaning": "不想上班", "caption": "不想上班", "action": "死死抱住门框不撒手，被一股力量往外拖", "emotion": "抗拒", "scene": "周一早上", "group": "情绪出口", "default": true, "textAnim": "shake" },
+    { "meaning": "加班", "caption": "又加班", "action": "在台灯下对着电脑，窗外月亮升起，黑眼圈越来越重", "emotion": "疲惫", "scene": "晚上还在干活", "group": "情绪出口", "default": true, "textAnim": "static" },
+    { "meaning": "心累", "caption": "心累", "action": "整个身体像融化的冰淇淋一样慢慢瘫成一滩", "emotion": "疲惫", "scene": "累到不想说话", "group": "情绪出口", "default": true, "textAnim": "static" },
+    { "meaning": "我太难了", "caption": "太难了", "action": "抱着头蹲在地上，头顶转着一团乱麻", "emotion": "无助", "scene": "遇到难题", "group": "情绪出口", "default": true, "textAnim": "shake" },
+    { "meaning": "想辞职", "caption": "不干了", "action": "把工牌往桌上一拍，转身叉腰，气鼓鼓地跺脚", "emotion": "愤怒", "scene": "被气到（开玩笑）", "group": "情绪出口", "default": false, "textAnim": "pop" },
+
+    { "meaning": "加油", "caption": "加油", "action": "握紧拳头用力挥舞，身后冒出小火焰", "emotion": "鼓励", "scene": "给同事打气", "group": "加油互助", "default": true, "textAnim": "bounce" },
+    { "meaning": "求帮忙", "caption": "救救我", "action": "双手合十快速搓动，眼泪汪汪地抬头看", "emotion": "请求", "scene": "求人帮忙", "group": "加油互助", "default": true, "textAnim": "shake" },
+    { "meaning": "厉害", "caption": "大佬", "action": "双手举高拼命鼓掌，眼睛变成闪亮的星星", "emotion": "崇拜", "scene": "夸同事", "group": "加油互助", "default": true, "textAnim": "pop" },
+    { "meaning": "辛苦了", "caption": "辛苦啦", "action": "双手捧着一杯热茶递过来，微微鞠躬", "emotion": "体贴", "scene": "感谢同事加班", "group": "加油互助", "default": true, "textAnim": "bounce" },
+    { "meaning": "多谢", "caption": "多谢", "action": "双手抱拳郑重地一拱手，再眨一下眼", "emotion": "感谢", "scene": "被帮了忙", "group": "加油互助", "default": true, "textAnim": "pop" },
+
+    { "meaning": "下班", "caption": "下班啦", "action": "背起小包一路蹦跳着冲向门口，身后飘出小音符", "emotion": "雀跃", "scene": "下班时", "group": "下班快乐", "default": true, "textAnim": "bounce" },
+    { "meaning": "周末", "caption": "周末快乐", "action": "戴着小墨镜躺在游泳圈上，跟着水波晃来晃去", "emotion": "放松", "scene": "周五晚上", "group": "下班快乐", "default": true, "textAnim": "bounce" },
+    { "meaning": "放假", "caption": "放假啦", "action": "拖着小行李箱原地转圈，兴奋地蹦起来", "emotion": "兴奋", "scene": "放假前", "group": "下班快乐", "default": true, "textAnim": "pop" }
+  ],
+  "rewardTextIdeas": ["给{name}加个鸡腿吧", "{name}想喝杯咖啡", "请{name}喝杯奶茶", "{name}今天也在努力搬砖", "投喂一下打工人{name}"]
+}

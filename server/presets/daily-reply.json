@@ -1,0 +1,53 @@
+{
+  "id": "daily-reply",
+  "name": "日常通用回应",
+  "audience": "所有年龄段：家人群、朋友私聊、同学群，最“万能”的一套",
+  "insight": [
+    "通用回应决定使用频率：好的、收到、谢谢这种每天都能用上",
+    "情绪要一眼看懂：开心、生气、震惊这类基础情绪，动作越夸张越好认",
+    "早安、晚安、拜拜这类问候适合发给长辈和不太熟的人，画面要温和",
+    "一张一个意思：缩到聊天列表大小、只看第一帧也能读懂",
+    "在浅色和深色聊天背景里都要清楚：粗描边、高对比、不要白边"
+  ],
+  "characters": [],
+  "groups": [
+    { "name": "回应", "why": "每天都要用，决定装了以后会不会常发" },
+    { "name": "情绪", "why": "最基础的喜怒哀乐，替你说出来" },
+    { "name": "问候", "why": "开启和结束聊天，发给谁都不失礼" },
+    { "name": "互动", "why": "道谢、道歉、鼓励、安慰" }
+  ],
+  "stickers": [
+    { "meaning": "好的", "caption": "好的", "action": "比一个大大的 OK 手势，俏皮地眨一下眼", "emotion": "爽快", "scene": "答应别人", "group": "回应", "default": true, "textAnim": "pop" },
+    { "meaning": "收到", "caption": "收到", "action": "敬一个礼，身体轻轻弹一下", "emotion": "认真", "scene": "确认收到", "group": "回应", "default": true, "textAnim": "pop" },
+    { "meaning": "嗯嗯", "caption": "嗯嗯", "action": "眯着眼甜甜地笑，快速连续点头", "emotion": "认同", "scene": "表示在听", "group": "回应", "default": true, "textAnim": "bounce" },
+    { "meaning": "可以", "caption": "可以", "action": "竖起大拇指，用力点一下头", "emotion": "肯定", "scene": "同意", "group": "回应", "default": true, "textAnim": "pop" },
+    { "meaning": "不行", "caption": "不行", "action": "双手在胸前交叉打一个大叉，用力摇头", "emotion": "拒绝", "scene": "拒绝请求", "group": "回应", "default": true, "textAnim": "shake" },
+    { "meaning": "好吧", "caption": "好吧", "action": "耸耸肩，摊开双手，叹一口气", "emotion": "无奈", "scene": "勉强答应", "group": "回应", "default": true, "textAnim": "static" },
+    { "meaning": "啊这", "caption": "啊这", "action": "僵在原地，嘴角抽动，一滴汗慢慢滑下", "emotion": "尴尬", "scene": "不知道怎么接话", "group": "回应", "default": true, "textAnim": "static" },
+    { "meaning": "哈哈哈", "caption": "哈哈哈", "action": "笑得前仰后合，拍着肚子停不下来", "emotion": "大笑", "scene": "看到好笑的事", "group": "回应", "default": true, "textAnim": "shake" },
+
+    { "meaning": "开心", "caption": "开心", "action": "原地蹦起来转一圈，身边冒出小星星", "emotion": "开心", "scene": "分享好事", "group": "情绪", "default": true, "textAnim": "pop" },
+    { "meaning": "生气", "caption": "生气", "action": "气鼓鼓地跺脚，头顶冒出一缕白烟", "emotion": "生气", "scene": "被惹到", "group": "情绪", "default": true, "textAnim": "shake" },
+    { "meaning": "难过", "caption": "难过", "action": "抱着膝盖坐着，头顶一朵小乌云在下雨", "emotion": "难过", "scene": "心情不好", "group": "情绪", "default": true, "textAnim": "static" },
+    { "meaning": "震惊", "caption": "震惊", "action": "眼睛瞪得圆圆的，嘴巴张成大大的 O 形，头上蹦出感叹号", "emotion": "震惊", "scene": "听到离谱消息", "group": "情绪", "default": true, "textAnim": "shake" },
+    { "meaning": "疑问", "caption": "啊？", "action": "歪着头，头顶冒出一个大问号", "emotion": "疑惑", "scene": "没看懂", "group": "情绪", "default": true, "textAnim": "bounce" },
+    { "meaning": "无语", "caption": "无语", "action": "面无表情地发呆，头顶慢慢飘过三个小黑点", "emotion": "无语", "scene": "对方说了离谱的话", "group": "情绪", "default": true, "textAnim": "static" },
+    { "meaning": "害怕", "caption": "怕怕", "action": "缩成一团瑟瑟发抖，把小毯子拉过头顶", "emotion": "害怕", "scene": "被吓到", "group": "情绪", "default": false, "textAnim": "shake" },
+    { "meaning": "得意", "caption": "得意", "action": "双手叉腰抬高下巴，眯眼坏笑，身边闪着小光芒", "emotion": "得意", "scene": "炫耀一下", "group": "情绪", "default": false, "textAnim": "pop" },
+
+    { "meaning": "早安", "caption": "早安", "action": "伸一个大大的懒腰，身后升起一轮小太阳", "emotion": "清新", "scene": "早上打招呼", "group": "问候", "default": true, "textAnim": "pop" },
+    { "meaning": "晚安", "caption": "晚安", "action": "抱着小枕头打哈欠，慢慢闭眼睡着，冒出鼻涕泡", "emotion": "困", "scene": "睡前", "group": "问候", "default": true, "textAnim": "static" },
+    { "meaning": "在吗", "caption": "在吗", "action": "从画面一侧探出半个脑袋，眨巴眨巴眼睛", "emotion": "好奇", "scene": "开启聊天", "group": "问候", "default": true, "textAnim": "bounce" },
+    { "meaning": "拜拜", "caption": "拜拜", "action": "用力挥手，身体跟着左右摇晃", "emotion": "告别", "scene": "结束聊天", "group": "问候", "default": true, "textAnim": "bounce" },
+    { "meaning": "吃了吗", "caption": "吃了吗", "action": "端着一碗热乎乎的饭，眼睛亮亮地看过来", "emotion": "关心", "scene": "饭点打招呼", "group": "问候", "default": false, "textAnim": "bounce" },
+
+    { "meaning": "谢谢", "caption": "谢谢", "action": "双手合十鞠一个躬，身边冒出小爱心", "emotion": "感谢", "scene": "道谢", "group": "互动", "default": true, "textAnim": "pop" },
+    { "meaning": "对不起", "caption": "对不起", "action": "低着头，双手捧着一朵小花递过来", "emotion": "歉意", "scene": "道歉", "group": "互动", "default": true, "textAnim": "bounce" },
+    { "meaning": "加油", "caption": "加油", "action": "握紧拳头举高，用力挥动", "emotion": "鼓励", "scene": "给人打气", "group": "互动", "default": true, "textAnim": "pop" },
+    { "meaning": "抱抱", "caption": "抱抱", "action": "张开双臂朝镜头扑过来", "emotion": "温暖", "scene": "安慰别人", "group": "互动", "default": true, "textAnim": "bounce" },
+    { "meaning": "点赞", "caption": "点赞", "action": "双手竖起大拇指，身后放出小礼花", "emotion": "赞赏", "scene": "夸别人", "group": "互动", "default": true, "textAnim": "pop" },
+    { "meaning": "来了", "caption": "来了来了", "action": "一溜烟跑进画面，脚下急刹车扬起烟尘", "emotion": "着急", "scene": "马上就到", "group": "互动", "default": true, "textAnim": "shake" },
+    { "meaning": "摸摸头", "caption": "摸摸头", "action": "踮起脚伸出小手做摸摸头的动作，表情温柔", "emotion": "安慰", "scene": "安慰别人", "group": "互动", "default": false, "textAnim": "bounce" }
+  ],
+  "rewardTextIdeas": ["给{name}买杯奶茶吧", "{name}想吃小零食", "投喂一下{name}吧", "{name}会继续努力哒", "摸摸{name}的头吧"]
+}

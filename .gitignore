@@ -1,0 +1,11 @@
+node_modules/
+dist/
+server-dist/
+release/
+data/
+data-public/
+.env
+spike/out/
+spike/*.jsonl
+scripts/out/
+signing/

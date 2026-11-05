@@ -1,0 +1,26 @@
+表情包工坊 —— 第三方组件与许可
+
+本软件免费提供。软件里用到了下面这些开源组件，按各自的许可证使用。
+
+【随软件附带的独立程序】
+- gifsicle（GIF 压缩）—— GNU General Public License v2.0
+  作为独立的可执行程序随附（node_modules/gifsicle/vendor/gifsicle.exe），由本软件调用。
+  源代码：https://github.com/kohler/gifsicle
+
+【图像处理】
+- sharp —— Apache License 2.0 —— https://github.com/lovell/sharp
+- libvips 及其依赖（随 @img/sharp-win32-x64 附带的动态库）—— GNU Lesser General Public License v3.0 或更高版本
+  源代码：https://github.com/libvips/libvips 、https://github.com/lovell/sharp-libvips
+- @napi-rs/canvas —— MIT（内含 Skia，BSD 3-Clause）—— https://github.com/Brooooooklyn/canvas
+- gifenc —— MIT；omggif —— MIT
+
+【字体】
+- 站酷快乐体 ZCOOL KuaiLe —— SIL Open Font License 1.1，全文见 server/fonts/OFL.txt
+
+【运行框架与其他】
+- Electron —— MIT（Chromium 等组件的许可见安装目录里的 LICENSES.chromium.html）
+- React、React DOM —— MIT
+- Express、Multer、Archiver、nanoid —— MIT
+- Tailwind CSS —— MIT
+
+以上组件的版权归各自作者所有。

@@ -1,0 +1,65 @@
+@import 'tailwindcss';
+
+@font-face {
+  font-family: 'ZCOOL KuaiLe';
+  src: url('../../server/fonts/ZCOOLKuaiLe-Regular.ttf') format('truetype');
+  font-display: swap;
+}
+
+@theme {
+  --color-cream: #fff8f2;
+  --color-paper: #ffffff;
+  --color-ink: #3a2a2a;
+  --color-muted: #8a7670;
+  --color-line: #f0e2da;
+  --color-accent: #ff7a90;
+  --color-accent-dark: #e85d75;
+  --color-accent-soft: #ffe8ec;
+  --color-ok: #2f9e6e;
+  --color-warn: #d98a1a;
+  --color-bad: #d6455d;
+  --font-display: 'ZCOOL KuaiLe', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+body {
+  background: var(--color-cream);
+  color: var(--color-ink);
+  font-family: 'PingFang SC', 'Microsoft YaHei', system-ui, sans-serif;
+  font-size: 14px;
+}
+
+.card {
+  @apply rounded-2xl border border-line bg-paper p-4 shadow-[0_1px_0_#f0e2da];
+}
+.btn {
+  @apply inline-flex items-center justify-center gap-1.5 rounded-xl border border-line bg-paper px-3 py-1.5 text-sm font-medium text-ink transition hover:border-accent hover:text-accent-dark disabled:cursor-not-allowed disabled:opacity-50;
+}
+.btn-primary {
+  @apply inline-flex items-center justify-center gap-1.5 rounded-xl bg-accent px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-accent-dark disabled:cursor-not-allowed disabled:opacity-50;
+}
+.input {
+  @apply w-full rounded-xl border border-line bg-paper px-3 py-1.5 text-sm outline-none focus:border-accent focus:ring-2 focus:ring-accent-soft;
+}
+.label {
+  @apply mb-1 block text-xs font-medium text-muted;
+}
+.chip {
+  @apply inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-xs font-medium;
+}
+.checker {
+  background-color: #fff;
+  background-image:
+    linear-gradient(45deg, #f3eae6 25%, transparent 25%), linear-gradient(-45deg, #f3eae6 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #f3eae6 75%), linear-gradient(-45deg, transparent 75%, #f3eae6 75%);
+  background-size: 16px 16px;
+  background-position:
+    0 0,
+    0 8px,
+    8px -8px,
+    -8px 0;
+}
