@@ -65,7 +65,7 @@ describe('火山方舟', () => {
   it('请求 b64_json、单图模式；参考图只有一张时传字符串；水印跟着设置走', async () => {
     const img = await png();
     const { f, calls } = fakeFetch([json({ data: [{ b64_json: img.toString('base64'), size: '1536x1536' }], usage: { generated_images: 1 } })]);
-    const r = await providerImage(call('ark', f, { watermark: true }), { prompt: 'p', refImages: [img], width: 1536, height: 1536 });
+    const r = await providerImage(call('ark', f, { imageModel: 'doubao-seedream-4-0-250828', watermark: true }), { prompt: 'p', refImages: [img], width: 1536, height: 1536 });
     expect(r.buf.equals(img)).toBe(true);
     const b = calls[0].body;
     expect(calls[0].url).toBe('https://ark.cn-beijing.volces.com/api/v3/images/generations');
@@ -73,7 +73,11 @@ describe('火山方舟', () => {
     expect(typeof b.image).toBe('string');
   });
 
-  it.each(['doubao-seededit-3-0-i2i-250628', 'doubao-seedream-5-0-flash-260928', 'doubao-seedream-5-0-pro-260628'])('%s 不带组图、流式参数', async (model) => {
+  it('默认生图模型是 Seedream 5.0 flash', () => {
+    expect(DEFAULT_SETTINGS.providers.ark.imageModel).toBe('doubao-seedream-5-0-flash-260915');
+  });
+
+  it.each(['doubao-seededit-3-0-i2i-250628', 'doubao-seedream-5-0-flash-260915', 'doubao-seedream-5-0-pro-260628'])('%s 不带组图、流式参数', async (model) => {
     const img = await png();
     const { f, calls } = fakeFetch([json({ data: [{ b64_json: img.toString('base64') }] })]);
     await providerImage(call('ark', f, { imageModel: model }), { prompt: 'p', refImages: [img], width: 1536, height: 1536 });

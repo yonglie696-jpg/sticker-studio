@@ -65,7 +65,7 @@ npm run dist:win
 安装包生成在 `release/表情包工坊-安装包-<版本号>.exe`。
 
 - 安装包里只有 `desktop/`、`dist/`、`server-dist/`、`server/presets`、`server/fonts` 和运行依赖，**不包括 `data/`**（你的 Key 和作品）、`scripts/`、`tests/`
-- 装好的软件把数据存在用户自己电脑的 `%APPDATA%\表情包工坊\data`，第一次打开是全新状态；卸载时不会删除这些数据
+- 装好的软件把数据存在用户自己电脑的 `%APPDATA%\sticker-studio-public\data`，第一次打开是全新状态。卸载时会询问是否一起删除这些数据（默认保留，升级覆盖安装不会删）；要手动清除，关掉软件后删除整个 `%APPDATA%\sticker-studio-public` 文件夹
 - 后端只监听本机 127.0.0.1，不会弹防火墙提示，局域网里的其他电脑也访问不到
 - 没有代码签名证书，所以 Windows 第一次运行时可能提示“Windows 已保护你的电脑”，点「更多信息」→「仍要运行」即可
 - 改版本号：改 `package.json` 里的 `version`

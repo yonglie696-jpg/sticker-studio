@@ -1,6 +1,6 @@
 {
   "name": "sticker-studio-public",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "private": true,
   "description": "表情包工坊（公开版）：国内模型出图 + 微信表情规范后期 + 上架包导出",
   "author": "表情包工坊",
@@ -99,7 +99,8 @@
         "zh_CN"
       ],
       "language": "2052",
-      "artifactName": "表情包工坊-安装包-${version}.${ext}"
+      "artifactName": "表情包工坊-安装包-${version}.${ext}",
+      "include": "build/installer.nsh"
     }
   }
 }

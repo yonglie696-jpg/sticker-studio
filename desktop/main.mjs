@@ -1,5 +1,6 @@
 // 桌面外壳（Electron）：在本机 127.0.0.1 的空闲端口上启动后端，再用窗口打开它。
-// 数据（角色、专辑、Key）存在 %APPDATA%\表情包工坊\data，卸载软件不会删除。
+// 数据（角色、专辑、Key）存在 %APPDATA%\sticker-studio-public\data（文件夹名来自 package.json 的 name）。
+// 卸载时会询问要不要一起删除（见 build/installer.nsh），升级覆盖安装不会删。
 import { app, BrowserWindow, dialog, shell } from 'electron';
 import net from 'node:net';
 import path from 'node:path';

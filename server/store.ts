@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { customAlphabet } from 'nanoid';
+import { checkKey, cleanKey } from './apiKey';
 import type { Album, Character, Job, ProcessSettings, ProviderId, Settings } from './types';
 
 /** 项目根目录（开发时是 server/ 的上一级；打包后是安装目录里的 app，后端代码在 server-dist/） */
@@ -19,12 +20,17 @@ for (const d of [DATA, FILES, EXPORTS]) fs.mkdirSync(d, { recursive: true });
 export const newId = customAlphabet('0123456789abcdefghijklmnopqrstuvwxyz', 10);
 export const now = () => new Date().toISOString();
 
+export const ARK_DEFAULT_IMAGE_MODEL = 'doubao-seedream-5-0-flash-260915';
+/** 以前的默认值；老数据里还是它的话，说明用户没改过，换成新默认 */
+const ARK_OLD_DEFAULT_IMAGE_MODELS = ['doubao-seedream-4-0-250828'];
+
 export const DEFAULT_SETTINGS: Settings = {
   // 单价是估算（第三方转售价折算），跑几张后以控制台账单为准，在设置里改。
   // 百炼默认用 pro：2026-11-05 实测，表情连贯、配饰不丢都明显好于 qwen-image-2.0
   providers: {
     bailian: { imageModel: 'qwen-image-2.0-pro', chatModel: 'qwen3.7-plus', size: 1536, pricePerImage: 0.4, watermark: false },
-    ark: { imageModel: 'doubao-seedream-4-0-250828', chatModel: 'doubao-seed-2-1-pro-260915', size: 1536, pricePerImage: 0.2, watermark: false },
+    // 方舟默认 Seedream 5.0 flash（模型 ID 以方舟官方文档为准，2026-11 核对）；单价沿用估算，以账单为准
+    ark: { imageModel: ARK_DEFAULT_IMAGE_MODEL, chatModel: 'doubao-seed-2-1-pro-260915', size: 1536, pricePerImage: 0.2, watermark: false },
     custom: { baseUrl: '', imageModel: '', chatModel: '', size: 1024, pricePerImage: 0, watermark: false },
   },
   budgetLimit: false,
@@ -65,11 +71,13 @@ interface Db {
 function load(): Db {
   if (!fs.existsSync(DB_FILE)) return { characters: [], albums: [], jobs: [], settings: structuredClone(DEFAULT_SETTINGS), spendCny: [] };
   const raw = JSON.parse(fs.readFileSync(DB_FILE, 'utf8')) as Partial<Db>;
+  const settings = deepMerge(DEFAULT_SETTINGS, raw.settings ?? {});
+  if (ARK_OLD_DEFAULT_IMAGE_MODELS.includes(settings.providers.ark.imageModel)) settings.providers.ark.imageModel = ARK_DEFAULT_IMAGE_MODEL;
   return {
     characters: raw.characters ?? [],
     albums: raw.albums ?? [],
     jobs: raw.jobs ?? [],
-    settings: deepMerge(DEFAULT_SETTINGS, raw.settings ?? {}),
+    settings,
     spendCny: raw.spendCny ?? [],
   };
 }
@@ -138,15 +146,23 @@ function readSecrets(): Secrets {
     return {};
   }
 }
+/**
+ * 界面里填的 Key 优先，环境变量兜底：方舟文档会教人设 ARK_API_KEY，
+ * 以前环境变量优先时，电脑里留着的旧 Key 会悄悄盖掉用户刚粘贴的新 Key。
+ * 读出来时也洗一遍，以前存进去的脏 Key（带了名称、Bearer 等）不用重填也能用。
+ */
 export function getApiKey(p: ProviderId): string | undefined {
-  return process.env[ENV_KEY[p]] || readSecrets().keys?.[p] || undefined;
+  return cleanKey(readSecrets().keys?.[p] ?? '') || cleanKey(process.env[ENV_KEY[p]] ?? '') || undefined;
 }
 export function setApiKey(key: string, p: ProviderId) {
+  const k = cleanKey(key);
+  const bad = checkKey(p, k);
+  if (bad) throw httpError(400, bad);
   const s = readSecrets();
-  s.keys = { ...s.keys, [p]: key.trim() };
+  s.keys = { ...s.keys, [p]: k };
   fs.writeFileSync(SECRETS_FILE, JSON.stringify({ keys: s.keys }));
 }
-export const keyHint = (k?: string) => (k ? `…${k.slice(-4)}` : '');
+export { keyHint } from './apiKey';
 
 // ---- 工具 ----
 export class HttpError extends Error {

@@ -153,7 +153,7 @@ function KeyGuide({ p }: { p: ProviderId }) {
             className="input"
             type="password"
             autoComplete="off"
-            placeholder={ps?.hasKey ? `已填 ${ps.keyHint}，填新的会覆盖` : 'sk-...'}
+            placeholder={ps?.hasKey ? `已填 ${ps.keyHint}，填新的会覆盖` : p === 'ark' ? 'ark-...' : p === 'bailian' ? 'sk-...' : 'API Key'}
             value={key}
             onChange={(e) => setKey(e.target.value)}
           />

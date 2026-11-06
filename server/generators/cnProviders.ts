@@ -57,6 +57,14 @@ function explain(code: string, msg: string) {
   return hint ? `${hint}（${code || ''} ${msg}）`.replace('（ ', '（') : msg;
 }
 
+/** 请求头。Key 里有中文等字符时 fetch 会报看不懂的 ByteString 错误，这里先拦下来说人话 */
+function headers(call: ProviderCall) {
+  if (/[^!-~]/.test(call.key)) {
+    throw new ProviderError(`${PROVIDER_INFO[call.provider].label}：Key 里混进了中文、空格或其他特殊字符，请在设置里只粘贴 Key 本身`, 401, 'InvalidApiKey');
+  }
+  return { Authorization: `Bearer ${call.key}`, 'Content-Type': 'application/json' };
+}
+
 async function readJson(res: Response, label: string): Promise<any> {
   const text = await res.text();
   let json: any;
@@ -117,7 +125,7 @@ async function bailianImage(call: ProviderCall, req: ProviderImageReq) {
   const { w, h } = fitPixels(req.width, req.height, 512 * 512, 2048 * 2048);
   const res = await f(BAILIAN_URL, {
     method: 'POST',
-    headers: { Authorization: `Bearer ${call.key}`, 'Content-Type': 'application/json' },
+    headers: headers(call),
     body: JSON.stringify({
       model: call.cfg.imageModel,
       input: { messages: [{ role: 'user', content }] },
@@ -168,7 +176,7 @@ async function arkImage(call: ProviderCall, req: ProviderImageReq) {
   for (;;) {
     const res = await f(ARK_URL, {
       method: 'POST',
-      headers: { Authorization: `Bearer ${call.key}`, 'Content-Type': 'application/json' },
+      headers: headers(call),
       body: JSON.stringify(body),
       signal: AbortSignal.timeout(TIMEOUT),
     });
@@ -199,7 +207,7 @@ async function customImage(call: ProviderCall, req: ProviderImageReq) {
   if (refs.length) body.image = refs;
   const res = await f(`${base}/images/generations`, {
     method: 'POST',
-    headers: { Authorization: `Bearer ${call.key}`, 'Content-Type': 'application/json' },
+    headers: headers(call),
     body: JSON.stringify(body),
     signal: AbortSignal.timeout(TIMEOUT),
   });
@@ -234,7 +242,7 @@ export async function providerChat(call: ProviderCall, messages: ChatMessage[], 
   if (call.provider === 'ark') body.thinking = { type: 'disabled' };
   const res = await f(`${base}/chat/completions`, {
     method: 'POST',
-    headers: { Authorization: `Bearer ${call.key}`, 'Content-Type': 'application/json' },
+    headers: headers(call),
     body: JSON.stringify(body),
     signal: AbortSignal.timeout(120_000),
   });
